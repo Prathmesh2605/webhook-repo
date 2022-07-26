@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>FlaskApp</title>
+    <style>
+      .sp {
+        font-weight: normal;
+        padding: 20px;
+        margin: 10px;
+        background-color: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Webhook Receiver App</h1>
+    <hr />
+    <div class="content">
+      <hr />
+      {% for item in data %} {% if item['action']=='opened' %}
+      <div class="sp">
+        <p>
+          <i
+            ><b>"{{ item['author']}}" </b>submitted a pull request from
+            <b>"{{ item['from_branch'] }}"</b> to
+            <b>"{{ item['to_branch'] }}"</b> on {{ item['timestamp'] }}</i
+          >
+        </p>
+      </div>
+      {% endif %} {% else %}
+      <div class="sp">
+        <p>
+          <i
+            ><b>"{{ item['author']}}" </b>pushed to
+            <b>"{{ item['to_branch'] }}"</b> on {{ item['timestamp'] }}</i
+          >
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+    <script type="text/javascript">
+      setTimeout(function () {
+        location.reload();
+      }, 15 * 1000);
+    </script>
+  </body>
+</html>

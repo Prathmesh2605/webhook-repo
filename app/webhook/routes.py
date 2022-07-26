@@ -36,4 +36,5 @@ def index():
     all_data =list( GHactions.find())
     
     return render_template('index.html', data = all_data)  
-
+if __name__ == '__main__': 
+    app.run(debug=True)

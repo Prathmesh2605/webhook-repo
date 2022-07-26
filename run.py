@@ -7,6 +7,7 @@ from pymongo import MongoClient
 
 webhook = Blueprint('Webhook', __name__, url_prefix='/webhook')
 
+app = Flask(__name__)
 
 client = MongoClient('localhost', 27017)
 db = client.webhooksdb
